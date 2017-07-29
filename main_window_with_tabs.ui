@@ -14,7 +14,7 @@
    <string>TabWidget</string>
   </property>
   <property name="currentIndex">
-   <number>1</number>
+   <number>0</number>
   </property>
   <widget class="QWidget" name="tab">
    <attribute name="title">
@@ -23,8 +23,8 @@
    <widget class="QLabel" name="benchmarks">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>120</y>
+      <x>30</x>
+      <y>140</y>
       <width>241</width>
       <height>31</height>
      </rect>
@@ -45,7 +45,7 @@
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>200</y>
+      <y>270</y>
       <width>241</width>
       <height>31</height>
      </rect>
@@ -66,7 +66,7 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>370</y>
+      <y>440</y>
       <width>241</width>
       <height>31</height>
      </rect>
@@ -113,7 +113,7 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>410</y>
+      <y>480</y>
       <width>407</width>
       <height>22</height>
      </rect>
@@ -147,7 +147,7 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>440</y>
+      <y>510</y>
       <width>407</width>
       <height>22</height>
      </rect>
@@ -160,7 +160,7 @@
     <property name="geometry">
      <rect>
       <x>40</x>
-      <y>240</y>
+      <y>310</y>
       <width>821</width>
       <height>41</height>
      </rect>
@@ -185,8 +185,8 @@
    <widget class="QLabel" name="iterations">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>280</y>
+      <x>30</x>
+      <y>360</y>
       <width>241</width>
       <height>31</height>
      </rect>
@@ -206,8 +206,8 @@
    <widget class="QTextEdit" name="iterations_value">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>320</y>
+      <x>30</x>
+      <y>400</y>
       <width>161</width>
       <height>31</height>
      </rect>
@@ -238,6 +238,39 @@
     <property name="value">
      <number>24</number>
     </property>
+   </widget>
+   <widget class="QWidget" name="layoutWidget_3">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>180</y>
+      <width>821</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout_5">
+     <item>
+      <widget class="QRadioButton" name="benchmark_exceptions_rb">
+       <property name="text">
+        <string>Handling exceptions</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QRadioButton" name="benchmark_list_compr_rb">
+       <property name="text">
+        <string>List comprehension</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QRadioButton" name="benchmark_generators_rb">
+       <property name="text">
+        <string>Generators</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </widget>
   </widget>
   <widget class="QWidget" name="tab_2">
@@ -297,10 +330,10 @@
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout_4">
      <item>
-      <widget class="QTextEdit" name="bytecode_python2"/>
+      <widget class="QPlainTextEdit" name="bytecode_python2"/>
      </item>
      <item>
-      <widget class="QTextEdit" name="bytecode_python3"/>
+      <widget class="QPlainTextEdit" name="bytecode_python3"/>
      </item>
     </layout>
    </widget>
