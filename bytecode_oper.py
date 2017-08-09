@@ -49,13 +49,13 @@ class BytecodeOper(object):
                     time.localtime(struct.unpack('I', b'D\xa5\xc2X')[0]))
 
         if sys.version_info.major == 3 and sys.version_info.minor >= 3:
-            commons.redirect_stdout(cfg.PYC_OUTPUT_FILE_3,
-                                    self.generate_pyc_output,
+            commons.redirect_stdout(filename=cfg.PYC_OUTPUT_FILE_3,
+                                    func=self.generate_pyc_output,
                                     code_obj=code, magic=magic,
                                     timestamp=timestamp, size=size)
         else:
-            commons.redirect_stdout(cfg.PYC_OUTPUT_FILE_2,
-                                    self.generate_pyc_output,
+            commons.redirect_stdout(filename=cfg.PYC_OUTPUT_FILE_2,
+                                    func=self.generate_pyc_output,
                                     code_obj=code, magic=magic,
                                     timestamp=timestamp, size=size)
         file.close()

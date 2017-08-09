@@ -9,9 +9,14 @@ VENV_2_PATH = os.path.join(HOME_PATH, 'venv_analyzer2', 'bin')
 VENV_3_PATH = os.path.join(HOME_PATH, 'venv_analyzer3', 'bin')
 PYC_OUTPUT_FILE_2 = 'dis_output_2'
 PYC_OUTPUT_FILE_3 = 'dis_output_3'
-
+BENCHMARK_PROFILE_OUTPUT = 'benchmark_profile_output'
 
 
 TEST_FILE = str()
 INTERPRETERS = dict()
 BENCHMARK_PROFILES = dict()
+
+##### PYPLOTLIB #####
+PLOT_OBJECTS = list()
+IMAGES_PATH = os.path.join(HOME_PATH, 'images')
+PERFORMANCE_DICT = dict()
