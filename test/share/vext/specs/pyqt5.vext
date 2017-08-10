@@ -1,0 +1,18 @@
+# Pyqt5 vext
+#
+
+extra_paths:
+    {sip.default_sip_dir}
+
+# Vext will allow access to these modules
+modules:
+    PyQt5
+    sip
+
+test_import:
+    # Vext will try and import any modules here
+    # To check if the install worked
+    sip, PyQt5
+
+install_hints:
+    PyQt5 was not found, install it in your system python.
