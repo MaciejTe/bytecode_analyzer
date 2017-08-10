@@ -14,12 +14,12 @@ class Plotter(object):
 
     @staticmethod
     def generate_bar_chart():
-        y_pos = np.arange(len(cfg.PLOT_OBJECTS))
-        performance = [cfg.PERFORMANCE_DICT[key] for key, val in
-                       cfg.PERFORMANCE_DICT.iteritems()]
+        plt.bar(range(len(cfg.PERFORMANCE_DICT)),
+                cfg.PERFORMANCE_DICT.values(),
+                align='center')
+        plt.xticks(range(len(cfg.PERFORMANCE_DICT)),
+                   cfg.PERFORMANCE_DICT.keys())
 
-        plt.bar(y_pos, performance, align='center', alpha=0.5)
-        plt.xticks(y_pos, cfg.PLOT_OBJECTS)
         plt.ylabel('Time [s]')
         plt.title('Interpreter performance')
 

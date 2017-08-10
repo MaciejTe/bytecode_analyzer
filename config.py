@@ -17,6 +17,5 @@ INTERPRETERS = dict()
 BENCHMARK_PROFILES = dict()
 
 ##### PYPLOTLIB #####
-PLOT_OBJECTS = list()
 IMAGES_PATH = os.path.join(HOME_PATH, 'images')
 PERFORMANCE_DICT = dict()

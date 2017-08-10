@@ -46,14 +46,10 @@ class MainWindow(QTabWidget, main_window_tabs.Ui_TabWidget):
         if self.python_2_cb.isChecked():
             cfg.INTERPRETERS.update({'venv_analyzer2/bin/python':
                                      'python_2_examples/'})
-            if 'Python 2.7.12' not in cfg.PLOT_OBJECTS:
-                cfg.PLOT_OBJECTS.append('Python 2.7.12')
             print('Python2.7 added to dictionary')
         if self.python_3_cb.isChecked():
             cfg.INTERPRETERS.update({'venv_analyzer3/bin/python':
                                      'python_3_examples/'})
-            if 'Python 3.5.2' not in cfg.PLOT_OBJECTS:
-                cfg.PLOT_OBJECTS.append('Python 3.5.2')
             print('Python3.5 added to dictionary')
 
     def choose_sample_benchmark(self):
@@ -193,7 +189,6 @@ class MainWindow(QTabWidget, main_window_tabs.Ui_TabWidget):
         cfg.INTERPRETERS.clear()
         cfg.BENCHMARK_PROFILES.clear()
         cfg.PERFORMANCE_DICT.clear()
-        del cfg.PLOT_OBJECTS[:]
 
     def clear_sample_benchmarks_rbs(self):
         self.benchmark_exceptions_rb.setChecked(False)
