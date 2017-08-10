@@ -1,7 +1,5 @@
 import matplotlib
-matplotlib.use('Qt5Agg')
-from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
-from matplotlib.figure import Figure
+# matplotlib.use('Qt5Agg')
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -36,7 +34,6 @@ class Plotter(object):
     #     print performance, len(performance), '*****'
     #
     #     for interpreter, perf in cfg.PERFORMANCE_DICT.iteritems():
-    #         print interpreter, perf, '&&&&&&&'
     #         line_chart.add(interpreter, float(perf))
     #
     #     # line_chart.render()

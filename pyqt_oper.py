@@ -1,5 +1,5 @@
 import os
-from PyQt4.QtGui import QPixmap
+from PyQt5.QtGui import QPixmap
 from sys import version_info
 
 import config

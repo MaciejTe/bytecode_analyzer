@@ -1,6 +1,7 @@
 from sys import argv
 from os import path, listdir, path
-from PyQt4 import QtGui
+from PyQt5 import QtGui
+from PyQt5.QtWidgets import QApplication, QTabWidget
 from subprocess import Popen, PIPE, STDOUT
 from time import sleep
 
@@ -13,11 +14,11 @@ from parser import Parser
 from plotter import Plotter
 
 
-class MainWindow(QtGui.QTabWidget, main_window_tabs.Ui_TabWidget):
+class MainWindow(QTabWidget, main_window_tabs.Ui_TabWidget):
     def __init__(self, parent=None):
         super(MainWindow, self).__init__(parent)
-        self.setWindowIcon(QtGui.QIcon('images/python.png'))
         self.setupUi(self)
+        self.setWindowIcon(QtGui.QIcon('images/python.png'))
         pyqt_obj = pyqt_oper.PyQtOper()
         pyqt_obj.load_image(self.front_image, 'images/python.png')
         self.bar_chart_rb.setChecked(True)  # TEMPORARILY
@@ -145,8 +146,12 @@ class MainWindow(QtGui.QTabWidget, main_window_tabs.Ui_TabWidget):
 
     @staticmethod
     def save_interpreter_performace(python_venv=None, parse_output=None):
-        cfg.PERFORMANCE_DICT.update({python_venv:
-                                     parse_output['User time (seconds)']})
+        if '3' in python_venv:
+            cfg.PERFORMANCE_DICT.update({'Python 3.5.2':
+                                         parse_output['User time (seconds)']})
+        else:
+            cfg.PERFORMANCE_DICT.update({'Python 2.7.12':
+                                         parse_output['User time (seconds)']})
 
     def select_file(self):
         """
@@ -197,7 +202,7 @@ class MainWindow(QtGui.QTabWidget, main_window_tabs.Ui_TabWidget):
 
 
 def main():
-    app = QtGui.QApplication(argv)
+    app = QApplication(argv)
     form = MainWindow()
     form.show()
     app.exec_()
