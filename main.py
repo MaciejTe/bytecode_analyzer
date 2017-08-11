@@ -1,7 +1,7 @@
 from sys import argv
 from os import path, listdir, path
-from PyQt5 import QtGui
-from PyQt5.QtWidgets import QApplication, QTabWidget
+from PyQt4 import QtGui
+# from PyQt4.QtWidgets import QApplication, QTabWidget
 from subprocess import Popen, PIPE, STDOUT
 from time import sleep
 
@@ -14,7 +14,7 @@ from parser import Parser
 from plotter import Plotter
 
 
-class MainWindow(QTabWidget, main_window_tabs.Ui_TabWidget):
+class MainWindow(QtGui.QTabWidget, main_window_tabs.Ui_TabWidget):
     def __init__(self, parent=None):
         super(MainWindow, self).__init__(parent)
         self.setupUi(self)
@@ -197,7 +197,7 @@ class MainWindow(QTabWidget, main_window_tabs.Ui_TabWidget):
 
 
 def main():
-    app = QApplication(argv)
+    app = QtGui.QApplication(argv)
     form = MainWindow()
     form.show()
     app.exec_()
