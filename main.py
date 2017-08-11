@@ -184,7 +184,7 @@ class MainWindow(QTabWidget, main_window_tabs.Ui_TabWidget):
     @staticmethod
     def exit_sequence():
         """
-            Sequence to execute after test was run.
+        Sequence to execute after test was run.
         """
         cfg.INTERPRETERS.clear()
         cfg.BENCHMARK_PROFILES.clear()
