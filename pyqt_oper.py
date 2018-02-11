@@ -1,7 +1,6 @@
 import config
 import os
 from PyQt4.QtGui import QPixmap
-import ImageViewerQt as iview
 
 
 class PyQtOper(object):
