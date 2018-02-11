@@ -14,7 +14,7 @@ from parser import Parser
 from plotter import Plotter
 
 
-class MainWindow(QtGui.QTabWidget, main_window_tabs.Ui_TabWidget):
+class MainWindow(QtGui.QTabWidget, main_window_tabs.Ui_Bytecode_analyzer):
     def __init__(self, parent=None):
         super(MainWindow, self).__init__(parent)
         self.setupUi(self)
@@ -44,11 +44,11 @@ class MainWindow(QtGui.QTabWidget, main_window_tabs.Ui_TabWidget):
         Choose wanted Python interpreter.
         """
         if self.python_2_cb.isChecked():
-            cfg.INTERPRETERS.update({'venv_analyzer2/bin/python':
+            cfg.INTERPRETERS.update({'venv_analyzer_2/bin/python':
                                      'python_2_examples/'})
             print('Python2.7 added to dictionary')
         if self.python_3_cb.isChecked():
-            cfg.INTERPRETERS.update({'venv_analyzer3/bin/python':
+            cfg.INTERPRETERS.update({'venv_analyzer_3/bin/python':
                                      'python_3_examples/'})
             print('Python3.5 added to dictionary')
 
@@ -104,8 +104,7 @@ class MainWindow(QtGui.QTabWidget, main_window_tabs.Ui_TabWidget):
             bytecode_obj = BytecodeOper()
             bytecode_obj.create_pyc_files(venv, example_path)
             # GENERATE OUTPUT FROM PYC FILES
-            self.generate_pyc_output_to_pyqt(bytecode_obj, example_path,
-                                             venv)
+            self.generate_pyc_output_to_pyqt(bytecode_obj, example_path, venv)
 
     def generate_pyc_output_to_pyqt(self, bytecode_obj, example_path, venv):
         """
@@ -117,28 +116,46 @@ class MainWindow(QtGui.QTabWidget, main_window_tabs.Ui_TabWidget):
         """
         if '3' in example_path:
             for filename in listdir(cfg.PYC_FILES_PYTHON_3_RELATIVE):
-                if cfg.TEST_FILE[:-2] in filename and filename.endswith(
-                        '.pyc'):
+                if cfg.TEST_FILE[:-2] in filename and filename.endswith('.pyc'):
                     pyc = path.join(cfg.EXAMPLES_PATH_3, '__pycache__',
                                     filename)
-                    Popen([venv, 'bytecode_oper.py', pyc],
-                          stdin=PIPE, stdout=PIPE, stderr=STDOUT)
+                    process = Popen([venv, 'bytecode_oper.py', pyc],
+                                    stdin=PIPE, stdout=PIPE, stderr=STDOUT)
+                    # print process.stdout.read()
                     pyqt_obj = pyqt_oper.PyQtOper(self.bytecode_python2,
                                                   self.bytecode_python3)
-                    sleep(0.1)
+                    sleep(0.5)
                     pyqt_obj.write_to_plain_text_edit_from_file(
                                                          cfg.PYC_OUTPUT_FILE_3,
                                                          python_ver='3')
+                    self.insert_image(self.graph_3, 'CFG_3.png')
         else:
             for filename in listdir(cfg.PYC_FILES_PYTHON_2_RELATIVE):
                 if cfg.TEST_FILE in filename and filename.endswith('.pyc'):
                     pyc = path.join(cfg.EXAMPLES_PATH_2, filename)
-                    bytecode_obj.analyze_pyc_file(pyc)
+                    process = Popen([venv, 'bytecode_oper.py', pyc],
+                                    stdin=PIPE, stdout=PIPE, stderr=STDOUT)
+                    # print process.stdout.read()
                     pyqt_obj = pyqt_oper.PyQtOper(self.bytecode_python2,
                                                   self.bytecode_python3)
+                    sleep(0.5)
                     pyqt_obj.write_to_plain_text_edit_from_file(
                                                          cfg.PYC_OUTPUT_FILE_2,
                                                          python_ver='2')
+                    self.insert_image(self.graph_2, 'CFG_2.png')
+
+    def generate_bytecode_graph(self, object, venv):
+        """
+
+        :return:
+        """
+        bytecode_obj = BytecodeOper()
+        code_obj = bytecode_obj.deserialize(object)
+        print 'VENV: ', venv
+        if '3' in venv:
+            bytecode_obj.bytecode_graph(code_obj, '3')
+        else:
+            bytecode_obj.bytecode_graph(code_obj, '2')
 
     @staticmethod
     def save_interpreter_performace(python_venv=None, parse_output=None):
@@ -172,6 +189,13 @@ class MainWindow(QtGui.QTabWidget, main_window_tabs.Ui_TabWidget):
         pyqt_obj.load_image(self.chart_label, cfg.IMAGES_PATH +
                             '/performance.png')
 
+    def insert_image(self, graph=None, image_path=None):
+        if (graph, image_path) is None:
+            print 'graph or image_path is None!'
+        pixmap = QtGui.QPixmap(image_path)
+        graph.setPixmap(pixmap)
+        self.resize(pixmap.width(), pixmap.height())
+
     def entry_sequence(self):
         """
         Sequence to execute before running test.
@@ -189,6 +213,9 @@ class MainWindow(QtGui.QTabWidget, main_window_tabs.Ui_TabWidget):
         cfg.INTERPRETERS.clear()
         cfg.BENCHMARK_PROFILES.clear()
         cfg.PERFORMANCE_DICT.clear()
+
+        #open(cfg.PYC_OUTPUT_FILE_2, 'w').close()
+        #open(cfg.PYC_OUTPUT_FILE_3, 'w').close()
 
     def clear_sample_benchmarks_rbs(self):
         self.benchmark_exceptions_rb.setChecked(False)

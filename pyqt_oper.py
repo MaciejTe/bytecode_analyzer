@@ -1,8 +1,7 @@
+import config
 import os
 from PyQt4.QtGui import QPixmap
-from sys import version_info
-
-import config
+import ImageViewerQt as iview
 
 
 class PyQtOper(object):
@@ -42,3 +41,8 @@ class PyQtOper(object):
         pixmap = QPixmap(path)
         scaled_img_label = pixmap.scaled(img_label.size())
         img_label.setPixmap(scaled_img_label)
+
+        #viewer = iview.ImageViewerQt()
+        #viewer.loadImageFromFile(fileName=path)
+
+        # viewer.show()
