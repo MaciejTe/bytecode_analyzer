@@ -24,6 +24,6 @@ pip install cssselect
 
 ## Screenshots
 
-![Screenshot](images/config_interface.png)
-![Screenshot](images/bytecode_tab.png)
-![Screenshot](images/bytecode_graph_tab.png)
+![config_interface](images/config_interface.png)
+![bytecode_tab](images/bytecode_tab.png)
+![bytecode_graph_tab](images/bytecode_graph_tab.png)
