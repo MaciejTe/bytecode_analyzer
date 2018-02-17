@@ -7,14 +7,13 @@ Application was tested on Ubuntu 16.04 LTS system;
 ### Prerequisites
 
 Following libraries are needed in order to launch bytecode analyzer(requirements.txt):
-
-...
+```
 sudo apt-get install python-qt4
 sudo apt install python-pydot python-pydot-ng graphviz
 sudo apt-get install python-pygal
 pip install tinycss
 pip install cssselect
-...
+```
 
 ## Built With
 
