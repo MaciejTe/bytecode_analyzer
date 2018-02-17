@@ -22,3 +22,8 @@ pip install cssselect
 * [Pygal](http://pygal.org/en/stable/) - Python SVG graph plotting library 
 
 
+## Screenshots
+
+![Screenshot](images/config_interface.png)
+![Screenshot](images/bytecode_tab.png)
+![Screenshot](images/bytecode_graph_tab.png)
