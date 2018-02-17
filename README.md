@@ -19,6 +19,6 @@ pip install cssselect
 
 * [PyQT4](https://www.riverbankcomputing.com/software/pyqt/download) - GUI
 * [bytecode_graph](https://github.com/fireeye/flare-bytecode_graph) - Flare bytecode graph
-
+* [Pygal](http://pygal.org/en/stable/) - Python SVG graph plotting library 
 
 
